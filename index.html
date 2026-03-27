@@ -2,25 +2,27 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Para você 💛</title>
+<title>Para você 🐱💛</title>
 
 <style>
 body {
+    background: #ffeef2;
     font-family: Arial, sans-serif;
-    background: #fff0f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     text-align: center;
+    padding: 30px;
 }
 
 .box {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
+    padding: 25px;
+    border-radius: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    display: inline-block;
     max-width: 400px;
+}
+
+h2 {
+    color: #ff4d6d;
 }
 
 button {
@@ -35,49 +37,98 @@ button {
 
 .frase {
     opacity: 0;
-    transition: 0.8s;
+    transition: 1s;
     margin-top: 15px;
 }
+
+.gato {
+    width: 120px;
+    margin: 10px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: 0.8s;
+    border-radius: 15px;
+}
+
+#presenteBtn {
+    display: none;
+    margin-top: 20px;
+    background: #ff85a2;
+}
+
+#mensagemFinal {
+    opacity: 0;
+    transition: 1s;
+    margin-top: 15px;
+    font-weight: bold;
+}
 </style>
+
 </head>
 
 <body>
 
 <div class="box">
-    <h2 id="inicio">
-        Oi Mimi, tudo bem?<br><br>
-        Eu não sou muito boa com as palavras, mas queria te dizer algumas coisas importantes 😌
+    <h2>
+        Oi meu bem, novo recado para você 🐱💛
     </h2>
 
-    <button onclick="mostrarFrases()">Clique aqui para saber mais</button>
+    <button onclick="mostrar()">Clica aqui 🐾</button>
 
-    <div id="frases"></div>
+    <div id="conteudo"></div>
+
+    <button id="presenteBtn" onclick="mostrarPresente()">🎁 Presente pra você</button>
+
+    <p id="mensagemFinal">Vale beijinhos e carinho 💛</p>
 </div>
 
 <script>
-let lista = [
-"Você é engraçadinha, gentil e carinhosa",
-"É doidinha mas é uma boa companhia e tem as melhores conversas",
-"Seu sorriso é bonito, e é mais bonito ainda quando você sorri e seus olhinhos fecham",
-"Você tem um ótimo gosto musical",
-"Essas são as coisitas importantes que eu tinha pra falar, e só são importantes porque fazem parte de você.",
-"Bjinhos 💛"
+let mensagens = [
+"Sei que os últimos dias não estão tão bons, mas saiba que pode contar comigo 🥰",
+"Você continua incrível e tudo bem ter dias não tão bons, respira fundo 😮‍💨",
+"Espero que esse recadinho faça um pouco de diferença, assim como você faz diferença nos meus dias 🥰"
 ];
 
-function mostrarFrases() {
-    let container = document.getElementById("frases");
-    container.innerHTML = "";
+let gatos = [
+"gatinho1.jpeg",
+"gatinho2.jpeg"
+];
 
-    lista.forEach((texto, index) => {
+function mostrar() {
+    let div = document.getElementById("conteudo");
+    div.innerHTML = "";
+
+    mensagens.forEach((texto, i) => {
         let p = document.createElement("p");
         p.className = "frase";
         p.innerText = texto;
-        container.appendChild(p);
+        div.appendChild(p);
 
         setTimeout(() => {
             p.style.opacity = 1;
-        }, index * 1500);
+        }, i * 1800);
     });
+
+    gatos.forEach((src, i) => {
+        let img = document.createElement("img");
+        img.src = src;
+        img.className = "gato";
+        div.appendChild(img);
+
+        setTimeout(() => {
+            img.style.opacity = 1;
+            img.style.transform = "scale(1)";
+        }, (mensagens.length * 1800) + (i * 800));
+    });
+
+    setTimeout(() => {
+        document.getElementById("presenteBtn").style.display = "inline-block";
+    }, (mensagens.length * 1800) + (gatos.length * 800) + 500);
+}
+
+function mostrarPresente() {
+    let msg = document.getElementById("mensagemFinal");
+    msg.style.opacity = 1;
 }
 </script>
 
