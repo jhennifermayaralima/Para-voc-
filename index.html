@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Para você 💛</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #fff0f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    max-width: 400px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.frase {
+    opacity: 0;
+    transition: 0.8s;
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2 id="inicio">
+        Oi Mimi, tudo bem?<br><br>
+        Eu não sou muito boa com as palavras, mas queria te dizer algumas coisas importantes 😌
+    </h2>
+
+    <button onclick="mostrarFrases()">Clique aqui para saber mais</button>
+
+    <div id="frases"></div>
+</div>
+
+<script>
+let lista = [
+"Você é engraçadinha, gentil e carinhosa",
+"É doidinha mas é uma boa companhia e tem as melhores conversas",
+"Seu sorriso é bonito, e é mais bonito ainda quando você sorri e seus olhinhos fecham",
+"Você tem um ótimo gosto musical",
+"Essas são as coisitas importantes que eu tinha pra falar, e só são importantes porque fazem parte de você.",
+"Bjinhos 💛"
+];
+
+function mostrarFrases() {
+    let container = document.getElementById("frases");
+    container.innerHTML = "";
+
+    lista.forEach((texto, index) => {
+        let p = document.createElement("p");
+        p.className = "frase";
+        p.innerText = texto;
+        container.appendChild(p);
+
+        setTimeout(() => {
+            p.style.opacity = 1;
+        }, index * 1500);
+    });
+}
+</script>
+
+</body>
+</html>
